@@ -7,7 +7,7 @@ namespace WPFAppCore
 {
     public partial class MainWindow : Window
     {
-        // private UpdateManager _manager;
+        private UpdateManager _manager;
 
         public MainWindow()
         {
@@ -19,8 +19,8 @@ namespace WPFAppCore
 
         private void AddVersionNumber()
         {
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var versionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             Dispatcher.Invoke(() =>
             {
                 this.Title += $" v.{versionInfo.FileVersion}";
@@ -46,41 +46,34 @@ namespace WPFAppCore
         }
         
 
-        // private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        // {
-        //     try
-        //     {
-        //         _manager = await UpdateManager
-        //             .GitHubUpdateManager(@"https://github.com/ikdyogasegara/WpfUpdateTest");
-        //
-        //         CurrentVersionTextBox.Text = _manager.CurrentlyInstalledVersion().ToString();
-        //     }
-        //     catch{}
-        //     
-        // }
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _manager = await UpdateManager
+                    .GitHubUpdateManager(@"https://github.com/ikdyogasegara/WpfUpdateTest");
+        
+                CurrentVersionTextBox.Text = _manager.CurrentlyInstalledVersion().ToString();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Failed to check update ; "+exception.Message);
+            }
+            
+        }
 
-        // private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
-        // {
-        //     var updateInfo = await _manager.CheckForUpdate();
-        //
-        //     if (updateInfo.ReleasesToApply.Count > 0)
-        //     {
-        //         UpdateButton.IsEnabled = true;
-        //     }
-        //     else
-        //     {
-        //         UpdateButton.IsEnabled = false;
-        //     }
-        // }
+        private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            var updateInfo = await _manager.CheckForUpdate();
+            UpdateButton.IsEnabled = updateInfo.ReleasesToApply.Count > 0;
+        }
 
-        // private async void UpdateButton_Click(object sender, RoutedEventArgs e)
-        // {
-        //     await _manager.UpdateApp();
-        //
-        //     MessageBox.Show("Updated succesfuly!");
-        //     
-        //     System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-        //     Application.Current.Shutdown();
-        // }
+        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            await _manager.UpdateApp();
+            MessageBox.Show("Updated succesfuly!");
+            Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+        }
     }
 }

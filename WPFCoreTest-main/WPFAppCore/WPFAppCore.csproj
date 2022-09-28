@@ -15,7 +15,7 @@
     </PackageReference>
     <PackageReference Include="squirrel.windows" Version="1.9.0" />
   </ItemGroup>
-
+ 
   <PropertyGroup>
     <NugetTools>$(PkgNuGet_CommandLine)\tools</NugetTools>
     <SquirrelTools>$(Pkgsquirrel_windows)\tools</SquirrelTools>

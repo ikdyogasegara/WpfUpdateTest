@@ -17,18 +17,15 @@
                 
             </TextBox>
 
-            <!-- <Button x:Name="UpdateButton" Click="UpdateButton_Click" -->
-            <!--     Margin="0,15,0,0" IsEnabled="False"> -->
-            <!--     Update -->
-            <!-- </Button> -->
-            <!-- -->
-            <!-- <Button Click="CheckForUpdatesButton_Click"> -->
-            <!--     Check -->
-            <!-- </Button> -->
+            <Button x:Name="UpdateButton" Click="UpdateButton_Click"
+                Margin="0,15,0,0" IsEnabled="False">
+                Update
+            </Button>
             
-            <Label>
-                Haloooooooo Versi Baru
-            </Label>
+            <Button Click="CheckForUpdatesButton_Click">
+                Check
+            </Button>
+            
         </StackPanel>
     </Grid>
 </Window>
