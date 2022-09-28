@@ -31,11 +31,13 @@ namespace WPFAppCore
         {
             try
             {
-                using (var mgr = await UpdateManager.GitHubUpdateManager(
-                           "https://github.com/ikdyogasegara/WpfUpdateTest"))
-                {
-                    var release = await mgr.UpdateApp();
-                }
+                using var mgr = await UpdateManager.GitHubUpdateManager(
+                    "https://github.com/ikdyogasegara/WpfUpdateTest");
+                CurrentVersionTextBox.Text = mgr.CurrentlyInstalledVersion().ToString();
+                var release = await mgr.UpdateApp();
+                MessageBox.Show($"Pembaruan Aplikasi Tersedia {release.Version}...Tutup dan jalankan ulang aplikasi");
+                Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
             }
             catch (Exception e)
             {

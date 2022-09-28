@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>1.0.5</AssemblyVersion>
-    <FileVersion>1.0.5</FileVersion>
+    <AssemblyVersion>1.0.6</AssemblyVersion>
+    <FileVersion>1.0.6</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
     <NugetTools>$(PkgNuGet_CommandLine)\tools</NugetTools>
     <SquirrelTools>$(Pkgsquirrel_windows)\tools</SquirrelTools>
 
-    <Version>1.0.5</Version>
+    <Version>$(FileVersion)</Version>
 
     <NuspecFile>$(SolutionDir)WPFAppCore\ReleaseSpec.nuspec</NuspecFile>
   </PropertyGroup>
