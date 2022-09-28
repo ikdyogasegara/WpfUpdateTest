@@ -1,27 +1,24 @@
-﻿<Window
-    x:Class="WPFAppCore.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:WPFAppCore"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
-    Width="800"
-    Height="450"
-    mc:Ignorable="d">
+﻿<Window x:Class="WPFAppCore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAppCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label>
                 Current version
             </Label>
+            
+            <TextBox x:Name="CurrentVersionTextBox"
+                IsReadOnly="True">
+                
+            </TextBox>
 
-            <TextBox x:Name="CurrentVersionTextBox" IsReadOnly="True" />
-
-            <Button
-                x:Name="UpdateButton"
-                Margin="0,15,0,0"
-                Click="UpdateButton_Click"
-                IsEnabled="False">
+            <Button x:Name="UpdateButton" Click="UpdateButton_Click"
+                Margin="0,15,0,0" IsEnabled="False">
                 Update
             </Button>
 
@@ -29,7 +26,5 @@
                 Check
             </Button>
         </StackPanel>
-        <Label Content="Label" />
-        Content="TEST 123&#xD;&#xA;"
     </Grid>
 </Window>
