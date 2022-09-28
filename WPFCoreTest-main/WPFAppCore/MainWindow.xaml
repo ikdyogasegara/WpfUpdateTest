@@ -25,6 +25,10 @@
             <Button Click="CheckForUpdatesButton_Click">
                 Check
             </Button>
+            
+            <Label>
+                Haloooooooo...
+            </Label>
         </StackPanel>
     </Grid>
 </Window>
